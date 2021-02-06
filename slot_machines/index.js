@@ -6,9 +6,6 @@ class App extends React.Component {
       <div>
         <h1>Slot Machines!</h1>
         <Machines emoji={3} />
-        <Machines emoji={3} />
-        <Machines emoji={3} />
-
       </div>
     );
   }
