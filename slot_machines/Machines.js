@@ -18,14 +18,17 @@ class Machines extends React.Component {
     });
 
     if (allEqual) {
-      message = <p>You win!!!</p>;
+      message = <p style={{fontSize: "50px", color: "red"}}>You win!!!</p>;
     } else {
       message = <p>you Lose!</p>;
     }
 
     return (
-      <div>
+      <div className="Machines">
+        <div style={{fontSize: "50px"}}>
         {pickedEmojiArray}
+
+        </div>
         {message}
       </div>
     );
