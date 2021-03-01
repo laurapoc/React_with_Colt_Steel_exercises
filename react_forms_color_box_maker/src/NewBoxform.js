@@ -10,6 +10,7 @@ export default class NewBoxform extends Component {
   handleSubmit = (evt) => {
     evt.preventDefault();
     this.props.addItem(this.state);
+    // this.props.removeItem(this.state);
     this.setState({ width: "", height: "", backgroundColor: "" });
   };
 

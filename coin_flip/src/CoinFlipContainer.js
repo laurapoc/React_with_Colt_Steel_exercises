@@ -5,7 +5,7 @@ export default class CoinFlipContainer extends Component {
   static defaultProps = {
     coinFaces: [
       { face: "https://tinyurl.com/react-coin-heads-jpg" },
-      { face: "http://www.pcgscoinfacts.com/UserImages/71009269r.jpg" },
+      { face: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwP_f8pmKdEm5AVkmF7jPJ-NJf7WaDfi0Bsw&usqp=CAU" },
     ],
   };
 
