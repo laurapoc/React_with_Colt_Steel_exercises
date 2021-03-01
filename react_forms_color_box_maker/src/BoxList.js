@@ -16,6 +16,7 @@ export default class BoxList extends Component {
   };
 
   removeItem = (event, item) => {
+    event.preventDefault();
     this.setState({
       items: this.state.items.filter((element) => {
         return item.id !== element.id;
