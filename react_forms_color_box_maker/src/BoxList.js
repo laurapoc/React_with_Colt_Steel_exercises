@@ -16,13 +16,12 @@ export default class BoxList extends Component {
   };
 
   removeItem = (event, item) => {
-    console.log("clicked");
     this.setState({
-      items: this.state.items.filter((item) => {
-        console.log(item.id)
-        return item !== item.id;
+      items: this.state.items.filter((element) => {
+        return item.id !== element.id;
       }),
     });
+    return this.state.items;
   };
 
   renderItems = () => {
@@ -34,7 +33,7 @@ export default class BoxList extends Component {
               width={item.width}
               height={item.height}
               backgroundColor={item.backgroundColor}
-              removeItem={this.removeItem}
+              removeItem={(event) => this.removeItem(event, item)}
             />
           </li>
         ))}
