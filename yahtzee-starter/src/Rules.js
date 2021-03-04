@@ -28,7 +28,7 @@ class Rule {
 
   count(dice, val) {
     // # times val appears in dice
-    return dice.filter(d => d === val).length;
+    return dice.filter((d) => d === val).length;
   }
 }
 
@@ -38,7 +38,7 @@ class Rule {
  */
 
 class TotalOneNumber extends Rule {
-  evalRoll = dice => {
+  evalRoll = (dice) => {
     return this.val * this.count(dice, this.val);
   };
 }
@@ -49,33 +49,40 @@ class TotalOneNumber extends Rule {
  */
 
 class SumDistro extends Rule {
-  evalRoll = dice => {
+  evalRoll = (dice) => {
     // do any of the counts meet of exceed this distro?
-    return this.freq(dice).some(c => c >= this.count) ? this.sum(dice) : 0;
+    return this.freq(dice).some((c) => c >= this.count) ? this.sum(dice) : 0;
   };
 }
 
 /** Check if full house (3-of-kind and 2-of-kind) */
 
-class FullHouse {
-  // TODO
-  evalRoll = dice => {
-    console.log(dice);
-    // do any of the counts meet of exceed this distro?
-    return this.freq(dice).some(c => c >= this.count) ? this.sum(dice) : 0;
+class FullHouse extends Rule {
+  evalRoll = (dice) => {
+    const freqs = this.freq(dice);
+    return freqs.includes(2) && freqs.includes(3) ? this.score : 0;
   };
 }
 
 /** Check for small straights. */
-
-class SmallStraight {
-  // TODO
+// 1234, 2345, 3456
+class SmallStraight extends Rule {
+  evalRoll = (dice) => {
+    const d = new Set(dice);
+    if (d.has(2) && d.has(3) && d.has(4) && (d.has(1) || d.has(5))) {
+      return this.score;
+    }
+    if (d.has(3) && d.has(4) && d.has(5) && (d.has(2) || d.has(6))) {
+      return this.score;
+    }
+    return 0;
+  };
 }
 
 /** Check for large straights. */
 
 class LargeStraight extends Rule {
-  evalRoll = dice => {
+  evalRoll = (dice) => {
     const d = new Set(dice);
 
     // large straight must be 5 different dice & only one can be a 1 or a 6
@@ -86,7 +93,7 @@ class LargeStraight extends Rule {
 /** Check if all dice are same. */
 
 class Yahtzee extends Rule {
-  evalRoll = dice => {
+  evalRoll = (dice) => {
     // all dice must be the same
     return this.freq(dice)[0] === 5 ? this.score : 0;
   };
@@ -105,10 +112,10 @@ const threeOfKind = new SumDistro({ count: 3 });
 const fourOfKind = new SumDistro({ count: 4 });
 
 // full house scores as flat 25
-const fullHouse = new FullHouse({ score: 25});
+const fullHouse = new FullHouse({ score: 25 });
 
 // small/large straights score as 30/40
-const smallStraight = "TODO";
+const smallStraight = new SmallStraight({ score: 30 });
 const largeStraight = new LargeStraight({ score: 40 });
 
 // yahtzee scores as 50
@@ -130,5 +137,5 @@ export {
   smallStraight,
   largeStraight,
   yahtzee,
-  chance
+  chance,
 };

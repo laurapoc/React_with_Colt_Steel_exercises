@@ -46,15 +46,16 @@ class Game extends Component {
   }
 
   toggleLocked(idx) {
-    console.log(idx);
     // toggle whether idx is in locked or not
-    this.setState((st) => ({
-      locked: [
-        ...st.locked.slice(0, idx),
-        !st.locked[idx],
-        ...st.locked.slice(idx + 1),
-      ],
-    }));
+    if (this.state.rollsLeft > 0) {
+      this.setState((st) => ({
+        locked: [
+          ...st.locked.slice(0, idx),
+          !st.locked[idx],
+          ...st.locked.slice(idx + 1),
+        ],
+      }));
+    }
   }
 
   doScore(rulename, ruleFn) {
@@ -68,6 +69,18 @@ class Game extends Component {
   }
 
   render() {
+    // MY SOLUTION TO DISABLE THE ROLLE BUTTON:
+    // console.log(this.state.rollsLeft);
+    // let button = (
+    //   <button
+    //     className="Game-reroll"
+    //     disabled={this.state.locked.every((x) => x)}
+    //     onClick={this.roll}
+    //   >
+    //     {this.state.rollsLeft} Rerolls Left
+    //   </button>
+    // );
+    // let buttonStatus = this.state.rollsLeft > 0 ? button : button.disabled;
     return (
       <div className="Game">
         <header className="Game-header">
@@ -87,6 +100,7 @@ class Game extends Component {
               >
                 {this.state.rollsLeft} Rerolls Left
               </button>
+              {/* {buttonStatus} */}
             </div>
           </section>
         </header>

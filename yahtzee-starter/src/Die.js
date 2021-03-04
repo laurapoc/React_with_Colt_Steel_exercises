@@ -9,7 +9,6 @@ class Die extends Component {
   };
 
   render() {
-    console.log(this.props.val);
     let iconClass = `fas fa-dice-${this.props.val}`;
     return (
       <button
