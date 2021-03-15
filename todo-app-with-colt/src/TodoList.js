@@ -24,6 +24,12 @@ export default class TodoList extends Component {
     });
   };
 
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log("IN COMPONENT DID UPDATE");
+  //   console.log(prevState.todos);
+  //   console.log(this.state.todos);
+  // }
+
   update = (id, updatedTask) => {
     const updatedTodos = this.state.todos.map((todo) => {
       if (todo.id === id) {
