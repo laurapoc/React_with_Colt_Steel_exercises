@@ -1,0 +1,29 @@
+.Home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Home .Content-box {
+  width: 35%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(120, 120, 120, 0.8);
+  margin: 10% auto;
+  font-size: 1.5rem;
+  padding: 2%;
+}
+
+.Home .Content-box a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+.Home .Content-box a:hover {
+  border-bottom: 1px solid white;
+  transition: 0.2s;
+}

@@ -1,0 +1,19 @@
+.Navigation {
+    background-color: rgb(88, 58, 58);
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.Navigation a {
+  padding: 0 5% 0 5%;
+  color: white;
+  text-decoration: none;
+}
+
+.active-link {
+    background-color: darkorange;
+    border-bottom: 1px solid white;
+    transition: 0.2s;
+}
