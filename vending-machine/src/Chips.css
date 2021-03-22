@@ -1,0 +1,11 @@
+.Chips-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Chips img {
+    width: 20%;
+    padding: 5%;
+    margin: 0 auto;
+}
