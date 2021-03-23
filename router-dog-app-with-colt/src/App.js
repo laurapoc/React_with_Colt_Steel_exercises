@@ -1,96 +1,79 @@
+// import {Navbar, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootstrap'
+import { Switch, Route } from "react-router-dom";
+import whiskey from "./images/whiskey.jpg";
+import tubby from "./images/tubby.jpg";
+import hazel from "./images/hazel.jpg";
 import "./App.css";
 
-function App() {
-  return (
-    <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            Navbar
-          </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Link
-                </a>
-              </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Dropdown
-                </a>
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Action
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="nav-link disabled"
-                  href="#"
-                  tabIndex="-1"
-                  aria-disabled="true"
-                >
-                  Disabled
-                </a>
-              </li>
-            </ul>
-            <form className="d-flex">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
-          </div>
-        </div>
-      </nav>
-      <h1 className="dispaly-1">Dog App</h1>
-    </div>
-  );
+import React, { Component } from "react";
+import DogList from "./DogList";
+
+export default class App extends Component {
+  static defaultProps = {
+    dogs: [
+      {
+        name: "Whiskey",
+        age: 5,
+        src: whiskey,
+        facts: [
+          "Whiskey loves eating popcorn.",
+          "Whiskey is a terrible guard dog.",
+          "Whiskey wants to cuddle with you!",
+        ],
+      },
+      {
+        name: "Hazel",
+        age: 3,
+        src: hazel,
+        facts: ["Hazel has soooo much energy!", "Hazel is highly intelligent.", "Hazel loves people more than dogs."],
+      },
+      {
+        name: "Tubby",
+        age: 4,
+        src: tubby,
+        facts: ["Tubby is not the brightest dog", "Tubby does not like walks or exercise.", "Tubby loves eating food."],
+      },
+    ],
+  };
+
+  render() {
+    return (
+      <Switch>
+        <Route path="/dogs" render={() => <DogList dogs={this.props.dogs} />} />
+      </Switch>
+    );
+  }
 }
 
-export default App;
+// function App() {
+
+//   return (
+//     <div>
+//       <Navbar bg="light" expand="lg">
+//         <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+//         <Navbar.Toggle aria-controls="basic-navbar-nav" />
+//         <Navbar.Collapse id="basic-navbar-nav">
+//           <Nav className="mr-auto">
+//             <Nav.Link href="#home">Home</Nav.Link>
+//             <Nav.Link href="#link">Link</Nav.Link>
+//             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+//               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+//               <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+//               <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+//               <NavDropdown.Divider />
+//               <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+//             </NavDropdown>
+//           </Nav>
+//           <Form inline>
+//             <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+//             <Button variant="outline-success">Search</Button>
+//           </Form>
+//         </Navbar.Collapse>
+//       </Navbar>
+
+//       <h1>Dog App</h1>
+//     </div>
+//   );
+// }
+
+// export default App;
